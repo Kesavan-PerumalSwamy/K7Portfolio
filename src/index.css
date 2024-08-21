@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 
+@font-face {
+  font-family: Cerotta;
+  src: url("./assets/fonts/Cerotta/CerottaPersonalUseOnly-0vW5d.otf");
+} */
+
+@font-face {
+  font-family: 'walbaum';
+  src: url('./assets/fonts/walbaum/Walbaum60pt.ttf'),
+       url('./assets/fonts/walbaum/Walbaum60ptBold.ttf'),
+       url('./assets/fonts/walbaum/Walbaum60ptBoldItalic.ttf'),
+       url('./assets/fonts/walbaum/Walbaum60ptExtraBold.ttf'),
+       url('./assets/fonts/walbaum/Walbaum60ptExtraBoldItalic.ttf'),
+       url('./assets/fonts/walbaum/Walbaum60ptItalic.ttf'),
+       url('./assets/fonts/walbaum/Walbaum60ptLight.ttf'),
+       url('./assets/fonts/walbaum/Walbaum60ptLightItalic.ttf'),
+}
+@font-face {
+  font-family: 'altone';
+  src: url('./assets/fonts/Altone/Altone-Regular.ttf'),
+       url('./assets/fonts/Altone/Altone-Bold.ttf'),
+       url('./assets/fonts/Altone/Altone-BoldOblique.ttf'),
+       url('./assets/fonts/Altone/Altone-Oblique.ttf'),
+       
+}
+@font-face {
+  font-family: 'altone-oblique';
+  src: url('./assets/fonts/Altone/Altone-BoldOblique.ttf'),
+}
+@font-face {
+  font-family: 'cerotta';
+  src: url('./assets/fonts/Cerotta/CerottaPersonalUseOnly-0vW5d.otf') 
+}

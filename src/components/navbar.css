@@ -1,0 +1,15 @@
+.menu-item p{
+    transition: letter-spacing 0.3s;
+}
+
+.menu-item p#active::after{
+    content: '';
+    position: absolute;
+   top: 45%;
+   left: 0;
+   transform: translateY(-50%);
+   width: 100%;
+   height: 12px;
+   background: #FF7F3E;
+   
+}

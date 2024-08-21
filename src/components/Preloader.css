@@ -1,0 +1,17 @@
+.preloader-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .preloader-content {
+    position: relative;
+    z-index: 1; /* Make sure the content is above the iframe */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white; /* Text color for visibility */
+  }
+  
