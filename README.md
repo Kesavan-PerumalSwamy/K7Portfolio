@@ -29,23 +29,23 @@ To run this project locally, follow these steps:
    ```bash
    git clone https://github.com/Kesavan-PerumalSwamy/k7-portfolio-website.git
    
-2.Navigate to the project directory:
+2. Navigate to the project directory:
   ```bash
   cd k7-portfolio-website
 
-3.Install dependencies:
+3. Install dependencies:
   ```bash
   npm install
 
-4.Start the development server:
+4. Start the development server:
   ```bash
   npm run dev
 
 
-##Contributing
+## Contributing
 
-Feel free to open an issue or submit a pull request if you have suggestions or improvements.
+- Feel free to open an issue or submit a pull request if you have suggestions or improvements.
 
-##License
+## License
 
-This project is licensed under the MIT License. For more details, see the [LICENSE](LICENSE) file.
+- This project is licensed under the MIT License. For more details, see the [LICENSE](LICENSE) file.
