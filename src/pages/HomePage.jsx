@@ -12,7 +12,7 @@ import Intern from "../assets/images/Hompage.png";
 import LyteDesign from "../assets/images/Logo.png";
 import watch from "../assets/images/Watch.png";
 import gsap from "gsap";
-import "./HomePage.css";
+import "./Homepage.css";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { TextPlugin } from "gsap/dist/TextPlugin";
 import { FaMedium } from "react-icons/fa6";
