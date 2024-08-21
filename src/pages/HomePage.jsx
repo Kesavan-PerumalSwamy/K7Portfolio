@@ -8,7 +8,7 @@ import Diamondline from "../assets/images/DiamondLine.svg";
 import Underline from "../assets/images/Underline.svg";
 import line from "../assets/images/Lines.svg";
 import jothi from "../assets/images/JothiPort.png";
-import Intern from "../assets/images/Hompage.png";
+import Intern from "../assets/images/Theintern.png";
 import LyteDesign from "../assets/images/Logo.png";
 import watch from "../assets/images/Watch.png";
 import gsap from "gsap";
@@ -27,24 +27,36 @@ const scrambleText = (element, finalText, duration = 0.005) => {
   let iteration = 0;
   const originalText = finalText.split("");
 
-  const scrambleInterval = setInterval(() => {
-    element.innerText = originalText
-      .map((letter, index) => {
-        if (index < iteration) {
-          return finalText[index];
-        }
+  // Set the element's width and prevent text wrapping
+  element.style.width = `${element.clientWidth}px`;
+  element.style.display = "inline-block";
+  element.style.whiteSpace = "nowrap";  // Prevent wrapping
 
-        return chars[Math.floor(Math.random() * chars.length)];
-      })
-      .join("");
+  const scrambleInterval = setInterval(() => {
+    const scrambledText = originalText.map((letter, index) => {
+      if (index < iteration) {
+        return finalText[index];
+      }
+      return chars[Math.floor(Math.random() * chars.length)];
+    }).join("");
+
+    // Only update the scrambled portion of the text
+    element.innerHTML = `${finalText.substring(0, iteration)}<span>${scrambledText.substring(iteration)}</span>`;
 
     if (iteration >= finalText.length) {
       clearInterval(scrambleInterval);
+      // Reset the width and display properties
+      element.style.width = "auto";
+      element.style.display = "inline";
+      element.style.whiteSpace = "normal";  // Reset wrapping to normal
     }
 
     iteration += 1 / 3;
   }, duration * 200);
 };
+
+
+
 const HomePage = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const textRef = useRef(null);
@@ -338,8 +350,9 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-altone
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             
-            className="py-10 overflow-hidden md:max-w-7xl w-[95%] mx-auto flex justify-between"
+            className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
+            <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
             <h1
 onMouseOver={handleMouseover} onMouseOut={handleMouseOut} 
  className="font-walbaum  text-Secondary md:text-5xl text-3xl">
@@ -348,13 +361,14 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut}
             <button className="item">
               <img src={Arrow} alt="Arrow" />
             </button>
+            </div>
+          <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
           </div>
-          <hr className="max-w-7xl mx-auto border-t border-black py-10" />
           <img
             ref={imageRef}
             src=""
             alt="Revealed"
-            className="absolute w-64 h-64 object-cover pointer-events-none"
+            className="absolute w-fit z-[999] h-72  object-fit pointer-events-none"
             style={{ display: "none", position: "absolute" }}
           />
         </div>
@@ -374,8 +388,10 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut}
             onMouseOver={(e) => handleMouseOver(e, LyteDesign)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="py-10 md:max-w-7xl w-[95%] overflow-hidden  mx-auto flex justify-between"
+            
+            className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
+            <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
             <h1 
 onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="hover-text font-walbaum text-Secondary md:text-5xl text-3xl">
               Lyte Design
@@ -383,13 +399,14 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="hover-text 
             <button className="item">
               <img src={Arrow} alt="Arrow" />
             </button>
+            </div>
+            <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
           </div>
-          <hr className=" max-w-7xl mx-auto border-t border-black py-10" />
           <img
             ref={imageRef}
             src=""
             alt="Revealed"
-            className="absolute w-80 h-64 object-fit pointer-events-none"
+            className="absolute z-[999] w-fit h-72 object-contain pointer-events-none"
             style={{ display: "none", position: "absolute" }}
           />
         </div>
@@ -409,8 +426,10 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="hover-text 
             onMouseOver={(e) => handleMouseOver(e, jothi)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="py-10 md:max-w-7xl w-[95%] overflow-hidden  mx-auto flex justify-between"
+            
+            className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
+            <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
             <h1
 onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className=" hover-text font-walbaum text-Secondary md:text-5xl text-3xl">
               Jothivasan's Portfolio Design
@@ -419,12 +438,13 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className=" hover-text
               <img src={Arrow} alt="Arrow" />
             </button>
           </div>
-          <hr className="max-w-7xl mx-auto border-t border-black py-10" />
+          <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
+          </div>
           <img
             ref={imageRef}
             src=""
             alt="Revealed"
-            className="absolute w-64 h-64 object-cover pointer-events-none"
+            className="absolute z-[999] w-fit h-72 object-contain pointer-events-none"
             style={{ display: "none", position: "absolute" }}
           />
         </div>
@@ -444,8 +464,10 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className=" hover-text
             onMouseOver={(e) => handleMouseOver(e, watch)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="py-10 overflow-hidden md:max-w-7xl w-[95%] mx-auto flex justify-between"
+            
+            className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
+            <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
             <h1
 onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-walbaum text-Secondary md:text-5xl text-3xl">
               Samsung Watch ReDesign
@@ -454,12 +476,13 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-walbau
               <img src={Arrow} alt="Arrow" />
             </button>
           </div>
-          <hr className="max-w-7xl mx-auto border-t border-black pt-10" />
+          <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
+          </div>
           <img
             ref={imageRef}
             src=""
             alt="Revealed"
-            className="absolute w-64 h-64 object-cover pointer-events-none"
+            className="absolute z-[999] w-64 h-64 object-cover pointer-events-none"
             style={{ display: "none", position: "absolute" }}
           />
         </div>
