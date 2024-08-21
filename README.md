@@ -29,13 +29,16 @@ To run this project locally, follow these steps:
    git clone https://github.com/Kesavan-PerumalSwamy/k7-portfolio-website.git
    
 2. **Navigate to the project directory:**
-   ```bash cd k7-portfolio-website
+   ```bash
+   cd k7-portfolio-website
 
 3. **Install dependencies:**
-   ```bash npm install
+   ```bash
+   npm install
 
 4. **Start the development server:**
-   ```bash npm run dev
+   ```bash
+   npm run dev
 
 
 ## Contributing
