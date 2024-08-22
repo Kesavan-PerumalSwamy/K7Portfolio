@@ -8,7 +8,7 @@ import Diamondline from "../assets/images/DiamondLine.svg";
 import Underline from "../assets/images/Underline.svg";
 import line from "../assets/images/Lines.svg";
 import jothi from "../assets/images/JothiPort.png";
-import Intern from "../assets/images/Theintern.png";
+import Intern from "../assets/images/Hompage.png";
 import LyteDesign from "../assets/images/Logo.png";
 import watch from "../assets/images/Watch.png";
 import gsap from "gsap";
@@ -19,6 +19,7 @@ import { FaMedium } from "react-icons/fa6";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoOpenOutline } from "react-icons/io5";
+import ResumeModal from "../components/ResumeModal";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -30,32 +31,35 @@ const scrambleText = (element, finalText, duration = 0.005) => {
   // Set the element's width and prevent text wrapping
   element.style.width = `${element.clientWidth}px`;
   element.style.display = "inline-block";
-  element.style.whiteSpace = "nowrap";  // Prevent wrapping
+  element.style.whiteSpace = "nowrap"; // Prevent wrapping
 
   const scrambleInterval = setInterval(() => {
-    const scrambledText = originalText.map((letter, index) => {
-      if (index < iteration) {
-        return finalText[index];
-      }
-      return chars[Math.floor(Math.random() * chars.length)];
-    }).join("");
+    const scrambledText = originalText
+      .map((letter, index) => {
+        if (index < iteration) {
+          return finalText[index];
+        }
+        return chars[Math.floor(Math.random() * chars.length)];
+      })
+      .join("");
 
     // Only update the scrambled portion of the text
-    element.innerHTML = `${finalText.substring(0, iteration)}<span>${scrambledText.substring(iteration)}</span>`;
+    element.innerHTML = `${finalText.substring(
+      0,
+      iteration
+    )}<span>${scrambledText.substring(iteration)}</span>`;
 
     if (iteration >= finalText.length) {
       clearInterval(scrambleInterval);
       // Reset the width and display properties
       element.style.width = "auto";
       element.style.display = "inline";
-      element.style.whiteSpace = "normal";  // Reset wrapping to normal
+      element.style.whiteSpace = "normal"; // Reset wrapping to normal
     }
 
     iteration += 1 / 3;
   }, duration * 200);
 };
-
-
 
 const HomePage = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -63,22 +67,38 @@ const HomePage = () => {
   const textRef1 = useRef(null);
   const vector1Ref = useRef(null);
   const vector2Ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Check on initial render
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleMouseover = () => {
-    const ball = document.querySelector('.ball');
-    const trail = document.querySelector('.mouse-trail');
-    if (ball) ball.style.display = 'block'; // Show the ball
-    if (trail) trail.style.display = 'none'; // Hide the trail
+    const ball = document.querySelector(".ball");
+    const trail = document.querySelector(".mouse-trail");
+    if (ball) ball.style.display = "block"; // Show the ball
+    if (trail) trail.style.display = "none"; // Hide the trail
   };
 
   const handleMouseOut = () => {
-    const ball = document.querySelector('.ball');
-    const trail = document.querySelector('.mouse-trail');
-    if (ball) ball.style.display = 'none'; // Hide the ball
-    if (trail) trail.style.display = 'block'; // Show the trail
+    const ball = document.querySelector(".ball");
+    const trail = document.querySelector(".mouse-trail");
+    if (ball) ball.style.display = "none"; // Hide the ball
+    if (trail) trail.style.display = "block"; // Show the trail
   };
-
-
 
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
@@ -204,15 +224,15 @@ const HomePage = () => {
 
   const imageRef = useRef(null);
 
- const handleMouseOver = (e, imageData) => {
+  const handleMouseOver = (e, imageData) => {
     const image = imageRef.current;
     image.setAttribute("src", imageData);
     image.style.display = "block";
-    image.style.position = "fixed";  // Ensure the image is positioned relative to the viewport
-    image.style.pointerEvents = "none";  // Prevent the image from interfering with mouse events
-};
+    image.style.position = "fixed"; // Ensure the image is positioned relative to the viewport
+    image.style.pointerEvents = "none"; // Prevent the image from interfering with mouse events
+  };
 
-const handleMouseMove = (e) => {
+  const handleMouseMove = (e) => {
     const image = imageRef.current;
 
     // Calculate the position to center the image around the cursor
@@ -221,17 +241,35 @@ const handleMouseMove = (e) => {
 
     image.style.left = `${e.clientX - offsetX}px`;
     image.style.top = `${e.clientY - offsetY}px`;
-};
+  };
 
-const handleMouseLeave = () => {
+  const handleMouseLeave = () => {
     const image = imageRef.current;
     image.style.display = "none";
-};
-
+  };
 
   return (
     <>
       <div className="bg-Primary relative h-screen overflow-hidden">
+        {isMobile && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-75">
+            <div className="bg-white p-5 mx-5 rounded-xl text-center">
+              <h2 className="text-lg font-bold text-gray-800">
+                Better Viewing Experience on Desktop!
+              </h2>
+              <p className="mt-1 text-sm text-gray-600">
+                For the best experience with mouse events and hover animations,
+                please visit my website on a laptop or desktop.
+              </p>
+              <button
+                className="mt-4 bg-Secondary text-white px-4 py-2 rounded-lg"
+                onClick={() => setIsMobile(false)}
+              >
+                Continue
+              </button>
+            </div>
+          </div>
+        )}
         <div className="flex pt-5  w-full mx-auto z-40 font-walbaum justify-center">
           <Button onClick={toggleNavbar}>Menu</Button>
         </div>
@@ -244,7 +282,8 @@ const handleMouseLeave = () => {
 
         <div className="relative z-10 mx-auto h-fit flex items-center justify-center md:pt-[10%] lg:pt-[12%] sm:pt-[48%] pt-[40%]">
           <h2
-            onMouseOver={handleMouseover} onMouseOut={handleMouseOut}
+            onMouseOver={handleMouseover}
+            onMouseOut={handleMouseOut}
             ref={textRef}
             className="font-walbaum hover-text text-center text-Secondary md:text-[6rem] text-[3rem]"
           >
@@ -283,12 +322,17 @@ const handleMouseLeave = () => {
 
         <div className="md:mt-[11%]   mt-[40%] w-[99%] absolute z-40">
           <div className="md:w-[50%] lg:w-[15%]  w-[90%] mx-auto text-center">
-            <h2 ref={textRef1} onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-walbaum">
+            <h2
+              ref={textRef1}
+              onMouseOver={handleMouseover}
+              onMouseOut={handleMouseOut}
+              className="font-walbaum"
+            >
               a keen eye for creating user-friendly and visually appealing{" "}
               <span className="text-Secondary font-altone-oblique">
                 websites
               </span>
-            </h2  >
+            </h2>
           </div>
           <div className="flex justify-center pt-5 relative">
             <div className="rotate-[-30deg]">
@@ -309,7 +353,12 @@ const handleMouseLeave = () => {
                     fill="transparent"
                   />
                   <text fill="#674188">
-                    <textPath onMouseOver={handleMouseover} onMouseOut={handleMouseOut} href="#circlePath" startOffset="0%">
+                    <textPath
+                      onMouseOver={handleMouseover}
+                      onMouseOut={handleMouseOut}
+                      href="#circlePath"
+                      startOffset="0%"
+                    >
                       talk to you soon • talk to you soon • talk to you soon•
                     </textPath>
                   </text>
@@ -325,7 +374,10 @@ const handleMouseLeave = () => {
       <div className="bg-Primary h-full ">
         <div className="md:pl-10 pt-10 md:block flex justify-center">
           <h1
-onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-altone w-fit text-3xl">
+            onMouseOver={handleMouseover}
+            onMouseOut={handleMouseOut}
+            className="font-altone w-fit text-3xl"
+          >
             Creative <br />
             <span className="font-cerotta text-4xl text-Purple">Works</span>
           </h1>
@@ -335,11 +387,16 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-altone
         </div>
         <div className="max-w-7xl mx-auto relative">
           <div>
-            <p onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className=" w-fit font-altone md:pl-0 pl-5">
+            <p
+              onMouseOver={handleMouseover}
+              onMouseOut={handleMouseOut}
+              className=" w-fit font-altone md:pl-0 pl-5"
+            >
               work - <span className="font-walbaum font-bold">1</span>
             </p>
             <img
-              onMouseOver={handleMouseover} onMouseOut={handleMouseOut}
+              onMouseOver={handleMouseover}
+              onMouseOut={handleMouseOut}
               src={Underline}
               alt=""
               className="absolute md:pl-0 pl-5 top-2 -left-4 w-30 h-10"
@@ -349,36 +406,42 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-altone
             onMouseOver={(e) => handleMouseOver(e, Intern)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            
             className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
             <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
-            <h1
-onMouseOver={handleMouseover} onMouseOut={handleMouseOut} 
- className="font-walbaum  text-Secondary md:text-5xl text-3xl">
-              TheIntern
-            </h1>
-            <button className="item">
-              <img src={Arrow} alt="Arrow" />
-            </button>
+              <h1
+                onMouseOver={handleMouseover}
+                onMouseOut={handleMouseOut}
+                className="font-walbaum  text-Secondary md:text-5xl text-3xl"
+              >
+                TheIntern
+              </h1>
+              <button className="item">
+                <img src={Arrow} alt="Arrow" />
+              </button>
             </div>
-          <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
+            <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
           </div>
           <img
             ref={imageRef}
             src=""
             alt="Revealed"
-            className="absolute w-fit z-[999] h-72  object-fit pointer-events-none"
+            className="absolute w-fit z-[999] h-72  object-contain pointer-events-none"
             style={{ display: "none", position: "absolute" }}
           />
         </div>
         <div className="max-w-7xl mx-auto  relative">
           <div className="md:pl-0 pl-5">
-            <p onMouseOver={handleMouseover} onMouseOut={handleMouseOut}  className=" w-fit font-altone">
+            <p
+              onMouseOver={handleMouseover}
+              onMouseOut={handleMouseOut}
+              className=" w-fit font-altone"
+            >
               work - <span className="font-walbaum font-bold ">2</span>
             </p>
             <img
-              onMouseOver={handleMouseover} onMouseOut={handleMouseOut}
+              onMouseOver={handleMouseover}
+              onMouseOut={handleMouseOut}
               src={Underline}
               alt=""
               className="absolute top-2 md:pl-0 pl-5 -left-4 w-30 h-10"
@@ -388,17 +451,19 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut}
             onMouseOver={(e) => handleMouseOver(e, LyteDesign)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            
             className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
             <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
-            <h1 
-onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="hover-text font-walbaum text-Secondary md:text-5xl text-3xl">
-              Lyte Design
-            </h1>
-            <button className="item">
-              <img src={Arrow} alt="Arrow" />
-            </button>
+              <h1
+                onMouseOver={handleMouseover}
+                onMouseOut={handleMouseOut}
+                className="hover-text font-walbaum text-Secondary md:text-5xl text-3xl"
+              >
+                Lyte Design
+              </h1>
+              <button className="item">
+                <img src={Arrow} alt="Arrow" />
+              </button>
             </div>
             <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
           </div>
@@ -412,11 +477,16 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="hover-text 
         </div>
         <div className="max-w-7xl mx-auto relative">
           <div>
-            <p onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className=" w-fit font-altone md:pl-0 pl-5">
+            <p
+              onMouseOver={handleMouseover}
+              onMouseOut={handleMouseOut}
+              className=" w-fit font-altone md:pl-0 pl-5"
+            >
               work - <span className="font-walbaum font-bold">3</span>
             </p>
             <img
-              onMouseOver={handleMouseover} onMouseOut={handleMouseOut}
+              onMouseOver={handleMouseover}
+              onMouseOut={handleMouseOut}
               src={Underline}
               alt=""
               className="absolute md:pl-0 pl-5 top-2 -left-4 w-30 h-10"
@@ -426,19 +496,21 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="hover-text 
             onMouseOver={(e) => handleMouseOver(e, jothi)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            
             className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
             <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
-            <h1
-onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className=" hover-text font-walbaum text-Secondary md:text-5xl text-3xl">
-              Jothivasan's Portfolio Design
-            </h1>
-            <button className="item">
-              <img src={Arrow} alt="Arrow" />
-            </button>
-          </div>
-          <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
+              <h1
+                onMouseOver={handleMouseover}
+                onMouseOut={handleMouseOut}
+                className=" hover-text font-walbaum text-Secondary md:text-5xl text-3xl"
+              >
+                Jothivasan's Portfolio Design
+              </h1>
+              <button className="item">
+                <img src={Arrow} alt="Arrow" />
+              </button>
+            </div>
+            <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
           </div>
           <img
             ref={imageRef}
@@ -450,11 +522,16 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className=" hover-text
         </div>
         <div className="max-w-7xl mx-auto relative">
           <div>
-            <p onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className=" w-fit font-altone md:pl-0 pl-5">
+            <p
+              onMouseOver={handleMouseover}
+              onMouseOut={handleMouseOut}
+              className=" w-fit font-altone md:pl-0 pl-5"
+            >
               work - <span className="font-walbaum font-bold">4</span>
             </p>
             <img
-              onMouseOver={handleMouseover} onMouseOut={handleMouseOut}
+              onMouseOver={handleMouseover}
+              onMouseOut={handleMouseOut}
               src={Underline}
               alt=""
               className="absolute md:pl-0 pl-5 top-2 -left-4 w-30 h-10"
@@ -464,19 +541,21 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className=" hover-text
             onMouseOver={(e) => handleMouseOver(e, watch)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            
             className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
             <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
-            <h1
-onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-walbaum text-Secondary md:text-5xl text-3xl">
-              Samsung Watch ReDesign
-            </h1>
-            <button className="item">
-              <img src={Arrow} alt="Arrow" />
-            </button>
-          </div>
-          <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
+              <h1
+                onMouseOver={handleMouseover}
+                onMouseOut={handleMouseOut}
+                className="font-walbaum text-Secondary md:text-5xl text-3xl"
+              >
+                Samsung Watch ReDesign
+              </h1>
+              <button className="item">
+                <img src={Arrow} alt="Arrow" />
+              </button>
+            </div>
+            <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
           </div>
           <img
             ref={imageRef}
@@ -487,21 +566,31 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-walbau
           />
         </div>
         <div className="font-walbaum flex justify-center   pb-10">
-          <p onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="w-fit">More Project on the Way</p>
+          <p
+            onMouseOver={handleMouseover}
+            onMouseOut={handleMouseOut}
+            className="w-fit"
+          >
+            More Project on the Way
+          </p>
         </div>
       </div>
       <div className="bg-Lavendar">
         <div className="pt-40 pb-24">
           <ul className="lg:flex grid text-center font-cerotta cursor-pointer md:text-7xl text-5xl md:justify-around justify-center">
             <li className="relative hover:text-Secondary group">
-              <Link  to={"/projects"}>
+              <Link to={"/projects"} onClick={() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }}>
                 Projects
                 <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-Secondary transition-all duration-500 ease-out group-hover:w-full"></span>
                 <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-orange-500 transition-all duration-700 ease-out group-hover:w-full z-10"></span>
               </Link>
             </li>
             <li className="relative hover:text-Secondary group">
-              <Link  to={"/about"}>
+              <Link to={"/about"} onClick={() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }}>
                 About
                 <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-Secondary transition-all duration-500 ease-out group-hover:w-full"></span>
                 <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-orange-500 transition-all duration-700 ease-out group-hover:w-full z-10"></span>
@@ -515,7 +604,14 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-walbau
               </a>
             </li>
           </ul>
-          <div className="pt-16 flex justify-center"><button target="_blank" className="md:w-1/6 px-4 bg-Secondary flex items-center justify-center gap-2 border-2 font-cerotta hover:bg-transparent hover:border-2 border-Secondary py-2 rounded-3xl text-white hover:text-Secondary">Resume <IoOpenOutline/></button></div>
+          <div className="pt-16 flex justify-center">
+            <button
+              onClick={openModal}
+              className="md:w-1/6 px-4 bg-Secondary flex items-center justify-center gap-2 border-2 font-cerotta hover:bg-transparent hover:border-2 border-Secondary py-2 rounded-3xl text-white hover:text-Secondary"
+            >
+              Resume <IoOpenOutline />
+            </button>
+          </div>
         </div>
 
         <div>
@@ -534,11 +630,17 @@ onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="font-walbau
                 <FaWhatsapp />
               </li>
             </ul>
-            <h2 onMouseOver={handleMouseover} onMouseOut={handleMouseOut} target="_blank" className="flex text-center md:text-sm text-[13px] justify-center font-walbaum">
+            <h2
+              onMouseOver={handleMouseover}
+              onMouseOut={handleMouseOut}
+              target="_blank"
+              className="flex text-center md:text-sm text-[13px] justify-center font-walbaum"
+            >
               © 2024 Kesavan Perumalsamy. All Rights Reserved.
             </h2>
           </div>
         </div>
+        <ResumeModal isOpen={isModalOpen} onClose={closeModal} />
       </div>
 
       <style jsx>{`

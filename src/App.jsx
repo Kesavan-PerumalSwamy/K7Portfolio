@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   useLocation,
+  ScrollRestoration,
 } from "react-router-dom";
 import Preloader from "./components/Preloader";
 import HomePage from "./pages/HomePage";

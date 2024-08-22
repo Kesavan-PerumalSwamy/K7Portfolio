@@ -27,8 +27,6 @@ const TextureMesh = () => {
             uniform float u_detail;
           
             float map(vec3 p) {
-              // Add your distance function or other operations here
-              // Example: return length(p) - 1.0; // a simple sphere
               return length(p.xy) - 1.0;
             }
           
@@ -111,7 +109,7 @@ export default function Preloader({ setLoading }) {
           clearInterval(interval);
           setTimeout(() => {
             setLoading(false);
-          }, 500);
+          }, 300);
           return 100;
         }
         return prevProgress + 2;
@@ -144,8 +142,11 @@ export default function Preloader({ setLoading }) {
       <div className={`mt-6 text-Secondary text-lg font-altone tracking-wide transform transition-all duration-500 ${fade ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
         {taglines[taglineIndex]}
       </div>
-      <div className="absolute bottom-4 font-walbaum left-4 text-white text-2xl">
+      <div className="absolute bottom-4 left-4 font-walbaum text-white text-2xl">
         K7’s Portfolio
+      </div>
+      <div className="absolute bottom-4 right-4 font-walbaum text-white text-6xl">
+        {progress}%
       </div>
     </div>
   );

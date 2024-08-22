@@ -1,11 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
-@font-face {
-  font-family: Cerotta;
-  src: url("./assets/fonts/Cerotta/CerottaPersonalUseOnly-0vW5d.otf");
-} */
+
+ 
 
 @font-face {
   font-family: 'walbaum';
@@ -33,4 +30,23 @@
 @font-face {
   font-family: 'cerotta';
   src: url('./assets/fonts/Cerotta/CerottaPersonalUseOnly-0vW5d.otf') 
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track:hover{
+  background: #674188;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #674188;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f97316;
 }

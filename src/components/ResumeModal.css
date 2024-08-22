@@ -1,0 +1,8 @@
+.button-label {
+    display: inline-block;
+    width: 150px; /* Adjust width based on your text length */
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace; /* Use a monospace font */
+    overflow: hidden; /* Prevent any overflow */
+  }
+  

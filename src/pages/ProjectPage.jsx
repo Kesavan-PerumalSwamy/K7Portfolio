@@ -106,7 +106,7 @@ const ProjectsPage = () => {
             title="LyteDesign - Web Design & Development Agency"
             title1="LyteDesign"
             overview="LyteDesign is an up-and-coming web design and development startup focused on creating stunning, award-winning websites for businesses looking to make a strong digital impact. Currently in the design phase, LyteDesign is set to revolutionize how businesses connect with their audience through innovative design and cutting-edge technology."
-            link="https://example.com"
+            link="#"
             linktext="Coming Soon"
             myrole="As the lead designer, I am responsible for shaping the brand’s visual identity and crafting a user-centric website that sets a new standard for web design."
             keyfeatures={[
@@ -196,14 +196,18 @@ const ProjectsPage = () => {
     <div className="pt-40 pb-24">
       <ul className="lg:flex grid text-center font-cerotta cursor-pointer md:text-7xl text-5xl md:justify-around justify-center">
         <li className="relative hover:text-Secondary group">
-          <Link  to={"/"}>
+          <Link  to={"/"} onClick={() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }}>
             Home
             <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-Secondary transition-all duration-500 ease-out group-hover:w-full"></span>
             <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-orange-500 transition-all duration-700 ease-out group-hover:w-full z-10"></span>
           </Link>
         </li>
         <li className="relative hover:text-Secondary group">
-          <Link  to={"/about"}>
+          <Link  to={"/about"} onClick={() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }}>
             About
             <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-Secondary transition-all duration-500 ease-out group-hover:w-full"></span>
             <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-orange-500 transition-all duration-700 ease-out group-hover:w-full z-10"></span>

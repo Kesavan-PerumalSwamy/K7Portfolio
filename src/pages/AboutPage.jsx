@@ -8,6 +8,7 @@ import { IoOpenOutline } from "react-icons/io5";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaMedium, FaWhatsapp } from "react-icons/fa6";
+import ResumeModal from "../components/ResumeModal";
 
 const greetings = {
   english: "Hello",
@@ -35,6 +36,10 @@ const AboutPage = () => {
   const [greetingIndex, setGreetingIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const handleMouseover = () => {
     const ball = document.querySelector('.ball');
@@ -167,8 +172,8 @@ const AboutPage = () => {
           </h1>
         </div>
         <div className="flex justify-center py-5 pb-10">
-          <a
-            href="" target="_blank"
+          <button
+            onClick={openModal}
             className="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-Secondary rounded-xl group"
           >
             <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-Purple rounded group-hover:-mr-4 group-hover:-mt-4">
@@ -178,7 +183,7 @@ const AboutPage = () => {
             <span className="relative flex items-center gap-2 font-cerotta w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-Secondary">
               Resume <IoOpenOutline size={23} className="pb-1" />
             </span>
-          </a>
+          </button>
         </div>
       </div>
       <div className="bg-Lavendar ">
@@ -186,14 +191,16 @@ const AboutPage = () => {
           <ul className="lg:flex grid text-center font-cerotta cursor-pointer md:text-7xl text-5xl md:justify-around justify-center">
             
             <li className="relative hover:text-Secondary group">
-              <Link to={"/projects"}>
+              <Link to={"/projects"} onClick={() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }}>
                 Projects
                 <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-Secondary transition-all duration-500 ease-out group-hover:w-full"></span>
                 <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-orange-500 transition-all duration-700 ease-out group-hover:w-full z-10"></span>
               </Link>
             </li>
             <li className="relative hover:text-Secondary group">
-              <Link to={"/"}>
+              <Link to={"/"} >
                 Home
                 <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-Secondary transition-all duration-500 ease-out group-hover:w-full"></span>
                 <span className="absolute left-0 bottom-0 w-0 h-[3px] bg-orange-500 transition-all duration-700 ease-out group-hover:w-full z-10"></span>
@@ -207,7 +214,7 @@ const AboutPage = () => {
               </a>
             </li>
           </ul>
-        <div className="pt-16 flex justify-center"><button target="_blank" className="md:w-1/6 px-4 bg-Secondary flex items-center justify-center gap-2 border-2 font-cerotta hover:bg-transparent hover:border-2 border-Secondary py-2 rounded-3xl text-white hover:text-Secondary">Resume <IoOpenOutline/></button></div>
+        <div className="pt-16 flex justify-center"><button onClick={openModal} className="md:w-1/6 px-4 bg-Secondary flex items-center justify-center gap-2 border-2 font-cerotta hover:bg-transparent hover:border-2 border-Secondary py-2 rounded-3xl text-white hover:text-Secondary">Resume <IoOpenOutline/></button></div>
         </div>
         <div>
           <div>
@@ -230,6 +237,7 @@ const AboutPage = () => {
             </p>
           </div>
         </div>
+        <ResumeModal isOpen={isModalOpen} onClose={closeModal} />
       </div>
     </>
   );

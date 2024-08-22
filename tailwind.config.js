@@ -17,9 +17,12 @@ export default {
         'altone': ['altone'],
         'cerotta': ["cerotta"],
         'altone-oblique': ['altone-oblique'],
+        'OpenSans':['Open Sans']
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 }
 
