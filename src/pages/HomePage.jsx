@@ -250,8 +250,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="bg-Primary relative h-screen overflow-hidden">
-        {isMobile && (
+    {isMobile && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-75">
             <div className="bg-white p-5 mx-5 rounded-xl text-center">
               <h2 className="text-lg font-bold text-gray-800">
@@ -270,6 +269,8 @@ const HomePage = () => {
             </div>
           </div>
         )}
+      <div className="bg-Primary relative h-screen overflow-hidden">
+        
         <div className="flex pt-5  w-full mx-auto z-40 font-walbaum justify-center">
           <Button onClick={toggleNavbar}>Menu</Button>
         </div>
