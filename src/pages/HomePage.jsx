@@ -69,9 +69,22 @@ const HomePage = () => {
   const vector2Ref = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  useEffect(() => {
+    const messageSeen = localStorage.getItem("mobileMessageSeen");
+    if (!messageSeen && isMobile) {
+      setShowMessage(true);
+    }
+  }, [isMobile]);
+
+  const handleContinueClick = () => {
+    localStorage.setItem("mobileMessageSeen", "true");
+    setShowMessage(false);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -250,25 +263,25 @@ const HomePage = () => {
 
   return (
     <>
-    {isMobile && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black  bg-opacity-75">
-            <div className="bg-white p-5 mx-5 rounded-xl text-center">
-              <h2 className="text-lg font-bold text-gray-800">
-                Better Viewing Experience on Desktop!
-              </h2>
-              <p className="mt-1 text-sm text-gray-600">
-                For the best experience with mouse events and hover animations,
-                please visit my website on a laptop or desktop.
-              </p>
-              <button
-                className="mt-4 bg-Secondary text-white px-4 py-2 rounded-lg"
-                onClick={() => setIsMobile(false)}
-              >
-                Continue
-              </button>
-            </div>
+    {showMessage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+          <div className="bg-white p-5 mx-5 rounded-xl text-center">
+            <h2 className="text-lg font-bold text-gray-800">
+              Better Viewing Experience on Desktop!
+            </h2>
+            <p className="mt-1 text-sm text-gray-600">
+              For the best experience with mouse events and hover animations,
+              please visit my website on a laptop or desktop.
+            </p>
+            <button
+              className="mt-4 bg-Secondary text-white px-4 py-2 rounded-lg"
+              onClick={handleContinueClick}
+            >
+              Continue
+            </button>
           </div>
-        )}
+        </div>
+      )}
       <div className="bg-Primary relative h-screen overflow-hidden">
         
         <div className="flex pt-5  w-full mx-auto z-40 font-walbaum justify-center">
