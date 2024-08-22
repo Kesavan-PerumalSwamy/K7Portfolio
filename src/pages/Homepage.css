@@ -5,3 +5,7 @@
   #imageRevealContainer img {
     transition: transform 0.3s ease;
   }
+  .group:hover .group-hover\:opacity-100 {
+    pointer-events: auto; 
+  }
+  

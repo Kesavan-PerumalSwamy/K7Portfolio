@@ -338,11 +338,11 @@ const HomePage = () => {
             <div className="rotate-[-30deg]">
               <img src={line} alt="" />
             </div>
-            <div className="relative group cursor-pointer">
-              <a href="mailto:contact@kesavanperumalsamy.in" className="bg-Secondary text-white px-8 py-2 rounded-full">
+            <a href="mailto:contact@kesavanperumalsamy.in" className="relative group cursor-pointer   z-50">
+              <div  className="bg-Secondary pointer-events-auto text-white px-8 py-2 rounded-full">
                 Get In Touch
-              </a>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              </div>
+              <div className="absolute z-30 inset-0 flex items-center justify-center pointer-events-none  opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <svg
                   viewBox="0 0 100 100"
                   className="w-[150px] h-[150px] animate-rotate"
@@ -364,7 +364,7 @@ const HomePage = () => {
                   </text>
                 </svg>
               </div>
-            </div>
+            </a>
             <div className="rotate-[160deg]">
               <img src={line} alt="" />
             </div>
