@@ -219,17 +219,25 @@ const AboutPage = () => {
         <div>
           <div>
             <ul onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="flex  justify-center gap-5 text-3xl pb-3">
-              <li>
-                <FaLinkedin />
+            <li onMouseOver={handleMouseover} onMouseOut={handleMouseOut}>
+                <a href="https://www.linkedin.com/in/kesavanperumalswamy/">
+                  <FaLinkedin />
+                </a>
               </li>
-              <li>
-                <FaMedium />
+              <li onMouseOver={handleMouseover} onMouseOut={handleMouseOut}>
+                <a href="https://github.com/Kesavan-PerumalSwamy">
+                  <FaGithub />
+                </a>
               </li>
-              <li>
-                <FaGithub />
-              </li> 
-              <li>
-                <FaWhatsapp />
+              <li onMouseOver={handleMouseover} onMouseOut={handleMouseOut}>
+                <a href="https://medium.com/@kesavanWebDev">
+                  <FaMedium />
+                </a>
+              </li>
+              <li onMouseOver={handleMouseover} onMouseOut={handleMouseOut}>
+                <a href="https://wa.me/6374906481">
+                  <FaWhatsapp />
+                </a>
               </li>
             </ul>
             <p onMouseOver={handleMouseover} onMouseOut={handleMouseOut} className="flex  text-center md:text-sm text-[13px] justify-center font-walbaum">

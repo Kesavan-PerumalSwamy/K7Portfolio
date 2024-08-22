@@ -617,17 +617,25 @@ const HomePage = () => {
         <div>
           <div>
             <ul className="flex justify-center gap-5 text-3xl pb-3">
-              <li onMouseOver={handleMouseover} onMouseOut={handleMouseOut}>
-                <FaLinkedin />
+            <li onMouseOver={handleMouseover} onMouseOut={handleMouseOut}>
+                <a href="https://www.linkedin.com/in/kesavanperumalswamy/">
+                  <FaLinkedin />
+                </a>
               </li>
               <li onMouseOver={handleMouseover} onMouseOut={handleMouseOut}>
-                <FaMedium />
+                <a href="https://github.com/Kesavan-PerumalSwamy">
+                  <FaGithub />
+                </a>
               </li>
               <li onMouseOver={handleMouseover} onMouseOut={handleMouseOut}>
-                <FaGithub />
+                <a href="https://medium.com/@kesavanWebDev">
+                  <FaMedium />
+                </a>
               </li>
               <li onMouseOver={handleMouseover} onMouseOut={handleMouseOut}>
-                <FaWhatsapp />
+                <a href="https://wa.me/6374906481">
+                  <FaWhatsapp />
+                </a>
               </li>
             </ul>
             <h2
