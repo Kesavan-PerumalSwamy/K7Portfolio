@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import Ball from "./components/Ball";
 import MouseTrail from "./components/MouseTrail";
+import ProjectsPage from "./pages/ProjectPage";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -33,7 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          {/* Add other routes as needed */}
+          <Route path="/projects" element={<ProjectsPage />} />
         </Routes>
       )}
     </>
