@@ -339,9 +339,9 @@ const HomePage = () => {
               <img src={line} alt="" />
             </div>
             <div className="relative group cursor-pointer">
-              <button className="bg-Secondary text-white px-8 py-2 rounded-full">
+              <a href="mailto:contact@kesavanperumalsamy.in" className="bg-Secondary text-white px-8 py-2 rounded-full">
                 Get In Touch
-              </button>
+              </a>
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <svg
                   viewBox="0 0 100 100"
