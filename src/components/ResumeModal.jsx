@@ -98,7 +98,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
                   </span>
                 </h2>
                 <h2 className="font-bold font-OpenSans pt-3 text-xl">
-                  Adhiparasakthi College of Arts and Science
+                  Aim Matriculation Hr Sec School
                 </h2>
                 <h2 className="font-semibold font-OpenSans pt-1 text-gray-700 text-lg">
                   10th Standard |{" "}

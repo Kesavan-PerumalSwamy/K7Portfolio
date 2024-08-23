@@ -251,6 +251,7 @@ const HomePage = () => {
     image.style.display = "block";
     image.style.position = "fixed"; 
     image.style.pointerEvents = "none"; 
+    
   };
 
   const handleMouseMove = (e) => {
@@ -429,6 +430,7 @@ const HomePage = () => {
             className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
             <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
+              <Link to={'/projects'}>
               <h1
                 onMouseOver={handleMouseover}
                 onMouseOut={handleMouseOut}
@@ -439,8 +441,10 @@ const HomePage = () => {
               <button className="item">
                 <img src={Arrow} alt="Arrow" />
               </button>
+              </Link>
             </div>
             <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
+            
           </div>
           <img
             ref={imageRef}
@@ -449,6 +453,7 @@ const HomePage = () => {
             className="absolute w-fit z-[999] h-72  object-contain pointer-events-none"
             style={{ display: "none", position: "absolute" }}
           />
+          
         </div>
         <div className="max-w-7xl mx-auto  relative">
           <div className="md:pl-0 pl-5">
@@ -473,7 +478,8 @@ const HomePage = () => {
             onMouseLeave={handleMouseLeave}
             className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
-            <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
+            <Link to={'/projects'} className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
+            
               <h1
                 onMouseOver={handleMouseover}
                 onMouseOut={handleMouseOut}
@@ -484,14 +490,15 @@ const HomePage = () => {
               <button className="item">
                 <img src={Arrow} alt="Arrow" />
               </button>
-            </div>
+              </Link>
+           
             <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
           </div>
           <img
             ref={imageRef}
             src=""
             alt="Revealed"
-            className="absolute z-[999] w-fit h-72 object-contain pointer-events-none"
+            className="absolute z-[999] transition-all duration-500 ease-in-out w-fit h-72 object-contain pointer-events-none"
             style={{ display: "none", position: "absolute" }}
           />
         </div>
@@ -518,7 +525,8 @@ const HomePage = () => {
             onMouseLeave={handleMouseLeave}
             className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
           >
-            <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
+            <Link to={'/projects'} className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
+            
               <h1
                 onMouseOver={handleMouseover}
                 onMouseOut={handleMouseOut}
@@ -529,7 +537,8 @@ const HomePage = () => {
               <button className="item">
                 <img src={Arrow} alt="Arrow" />
               </button>
-            </div>
+              </Link>
+            
             <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
           </div>
           <img
@@ -561,9 +570,10 @@ const HomePage = () => {
             onMouseOver={(e) => handleMouseOver(e, watch)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
+            className="py-10 overflow-hidden  hover:px-20 transition-all duration-300  "
           >
-            <div className="flex justify-between md:max-w-7xl  w-[95%] mx-auto">
+            <Link to={'/projects' } className="flex justify-between  md:max-w-7xl  w-[95%] mx-auto">
+            
               <h1
                 onMouseOver={handleMouseover}
                 onMouseOut={handleMouseOut}
@@ -571,10 +581,11 @@ const HomePage = () => {
               >
                 Samsung Watch ReDesign
               </h1>
-              <button className="item">
+              <button className="pt-10">
                 <img src={Arrow} alt="Arrow" />
               </button>
-            </div>
+              
+            </Link>
             <hr className="max-w-7xl hover:px-20 transition-all duration-500 mx-auto border-t border-black mt-16" />
           </div>
           <img
