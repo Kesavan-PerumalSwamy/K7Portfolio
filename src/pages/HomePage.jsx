@@ -27,11 +27,10 @@ const scrambleText = (element, finalText, duration = 0.005) => {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   let iteration = 0;
   const originalText = finalText.split("");
-
-  // Set the element's width and prevent text wrapping
+  
   element.style.width = `${element.clientWidth}px`;
   element.style.display = "inline-block";
-  element.style.whiteSpace = "nowrap"; // Prevent wrapping
+  element.style.whiteSpace = "nowrap";
 
   const scrambleInterval = setInterval(() => {
     const scrambledText = originalText
@@ -43,7 +42,6 @@ const scrambleText = (element, finalText, duration = 0.005) => {
       })
       .join("");
 
-    // Only update the scrambled portion of the text
     element.innerHTML = `${finalText.substring(
       0,
       iteration
@@ -51,10 +49,10 @@ const scrambleText = (element, finalText, duration = 0.005) => {
 
     if (iteration >= finalText.length) {
       clearInterval(scrambleInterval);
-      // Reset the width and display properties
+      
       element.style.width = "auto";
       element.style.display = "inline";
-      element.style.whiteSpace = "normal"; // Reset wrapping to normal
+      element.style.whiteSpace = "normal"; 
     }
 
     iteration += 1 / 3;
@@ -113,15 +111,15 @@ const HomePage = () => {
   const handleMouseover = () => {
     const ball = document.querySelector(".ball");
     const trail = document.querySelector(".mouse-trail");
-    if (ball) ball.style.display = "block"; // Show the ball
-    if (trail) trail.style.display = "none"; // Hide the trail
+    if (ball) ball.style.display = "block"; 
+    if (trail) trail.style.display = "none"; 
   };
 
   const handleMouseOut = () => {
     const ball = document.querySelector(".ball");
     const trail = document.querySelector(".mouse-trail");
-    if (ball) ball.style.display = "none"; // Hide the ball
-    if (trail) trail.style.display = "block"; // Show the trail
+    if (ball) ball.style.display = "none"; 
+    if (trail) trail.style.display = "block";
   };
 
   const toggleNavbar = () => {
@@ -133,7 +131,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    // Select all text elements
+    
     gsap.utils.toArray("h1, p").forEach((element) => {
       gsap.fromTo(
         element,
@@ -145,7 +143,7 @@ const HomePage = () => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: element,
-            start: "top 90%", // Trigger when the element is 80% from the top of the viewport
+            start: "top 90%",
             end: "bottom top",
             scrub: true,
           },
@@ -220,21 +218,20 @@ const HomePage = () => {
       }
     );
 
-    // Add mouse hover shake effect with increased speed and length
     const handleMouseMove = (event) => {
       const { clientX, clientY } = event;
       const { innerWidth: screenWidth, innerHeight: screenHeight } = window;
 
-      const offsetX = (clientX - screenWidth / 2) / 10; // Increase length
-      const offsetY = (clientY - screenHeight / 2) / 10; // Increase length
+      const offsetX = (clientX - screenWidth / 2) / 10; 
+      const offsetY = (clientY - screenHeight / 2) / 10; 
 
-      gsap.to(vector1Element, { x: offsetX, y: offsetY, duration: 0.1 }); // Increase speed
-      gsap.to(vector2Element, { x: offsetX, y: offsetY, duration: 0.1 }); // Increase speed
+      gsap.to(vector1Element, { x: offsetX, y: offsetY, duration: 0.1 }); 
+      gsap.to(vector2Element, { x: offsetX, y: offsetY, duration: 0.1 }); 
     };
 
     const resetPosition = () => {
-      gsap.to(vector1Element, { x: 0, y: 0, duration: 0.3 }); // Adjust bounce back speed
-      gsap.to(vector2Element, { x: 0, y: 0, duration: 0.3 }); // Adjust bounce back speed
+      gsap.to(vector1Element, { x: 0, y: 0, duration: 0.3 }); 
+      gsap.to(vector2Element, { x: 0, y: 0, duration: 0.3 }); 
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -252,14 +249,12 @@ const HomePage = () => {
     const image = imageRef.current;
     image.setAttribute("src", imageData);
     image.style.display = "block";
-    image.style.position = "fixed"; // Ensure the image is positioned relative to the viewport
-    image.style.pointerEvents = "none"; // Prevent the image from interfering with mouse events
+    image.style.position = "fixed"; 
+    image.style.pointerEvents = "none"; 
   };
 
   const handleMouseMove = (e) => {
     const image = imageRef.current;
-
-    // Calculate the position to center the image around the cursor
     const offsetX = image.offsetWidth / 2;
     const offsetY = image.offsetHeight / 2;
 

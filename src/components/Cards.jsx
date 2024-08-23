@@ -31,7 +31,7 @@ const Cards = ({
         }
       },
       {
-        threshold: 0.1 // Lowered threshold to ensure visibility trigger on small screens
+        threshold: 0.1 
       }
     );
 

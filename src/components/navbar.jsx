@@ -35,10 +35,10 @@ const Navbar = ({ onClose }) => {
     const footerLinks = footerLinksRef.current;
     const overlay = overlayRef.current;
 
-    // Set the initial state of the overlay
+   
     gsap.set(overlay, { opacity: 0.2 });
 
-    // Animation for opening
+   
     gsap.fromTo(
       navbar,
       { x: "-100%" },
@@ -78,7 +78,7 @@ const Navbar = ({ onClose }) => {
     );
 
     return () => {
-      // Animation for closing
+      
       gsap.to(navbar, {
         x: "-100%",
         duration: 0.8,
@@ -97,7 +97,6 @@ const Navbar = ({ onClose }) => {
     const navbar = navbarRef.current;
     const overlay = overlayRef.current;
 
-    // Animate the navbar and overlay out
     gsap.to(navbar, {
       x: "-100%",
       duration: 1,
@@ -109,7 +108,6 @@ const Navbar = ({ onClose }) => {
       duration: 1.5,
       ease: "power3.inOut",
       onComplete: () => {
-        // After the animation completes, call the onClose function
         onClose();
       },
     });

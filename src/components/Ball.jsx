@@ -45,11 +45,11 @@ const Ball = () => {
         width: '60px',
         height: '60px',
         borderRadius: '50%',
-        backgroundColor: '#FF7F3E', // Orange color
+        backgroundColor: '#FF7F3E', 
         pointerEvents: 'none',
         zIndex: '10000',
         mixBlendMode: 'darken',
-        display: 'none', // Hidden by default
+        display: 'none', 
       }}
     />
   );

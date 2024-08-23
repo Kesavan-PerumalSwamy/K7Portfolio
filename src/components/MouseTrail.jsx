@@ -3,12 +3,12 @@ import React, { useEffect } from 'react';
 const MouseTrail = () => {
   useEffect(() => {
     const coords = { x: 0, y: 0 };
-    const numDots = 20; // Number of dots
+    const numDots = 20;  
     const dots = [];
     const trail = document.createElement('div');
     trail.className = 'fixed top-0 left-0 pointer-events-none z-[9998]';
 
-    // Create dots
+    
     for (let i = 0; i < numDots; i++) {
       const dot = document.createElement('div');
       dot.className = 'circle w-4 h-4 bg-black rounded-full absolute';
@@ -53,7 +53,7 @@ const MouseTrail = () => {
 
     animateCircles();
 
-    // Clean up on component unmount
+    
     return () => {
       document.body.removeChild(trail);
     };
