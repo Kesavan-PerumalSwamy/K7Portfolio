@@ -37,8 +37,33 @@ const AboutPage = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
+  const handleResumeClick = () => {
+    if (isMobile) {
+      // Trigger the download of the resume PDF on small screens
+      const link = document.createElement("a");
+      link.href = "../assets/images/KESAVAN-PERUMALSAMY-RESUME.pdf"; // Replace with the actual path to your resume PDF
+      link.download = "K7-Resume.pdf";
+      link.click();
+    } else {
+      // Open the resume modal on large screens
+      setIsModalOpen(true);
+    }
+  };
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Check on initial render
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const closeModal = () => setIsModalOpen(false);
 
   const handleMouseover = () => {
@@ -214,7 +239,7 @@ const AboutPage = () => {
               </a>
             </li>
           </ul>
-        <div className="pt-16 flex justify-center"><button onClick={openModal} className="md:w-1/6 px-4 bg-Secondary flex items-center justify-center gap-2 border-2 font-cerotta hover:bg-transparent hover:border-2 border-Secondary py-2 rounded-3xl text-white hover:text-Secondary">Resume <IoOpenOutline/></button></div>
+        <div className="pt-16 flex justify-center"><button onClick={handleResumeClick} className="md:w-1/6 px-4 bg-Secondary flex items-center justify-center gap-2 border-2 font-cerotta hover:bg-transparent hover:border-2 border-Secondary py-2 rounded-3xl text-white hover:text-Secondary">Resume <IoOpenOutline/></button></div>
         </div>
         <div>
           <div>
@@ -245,7 +270,9 @@ const AboutPage = () => {
             </p>
           </div>
         </div>
+        {!isMobile && isModalOpen && (
         <ResumeModal isOpen={isModalOpen} onClose={closeModal} />
+      )}
       </div>
     </>
   );

@@ -1,13 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Navbar from "../components/navbar";
 import Cards from "../components/Cards";
 import { FaGithub, FaLinkedin, FaMedium, FaWhatsapp } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { IoOpenOutline } from "react-icons/io5";
+import ResumeModal from "../components/ResumeModal";
 
 const ProjectsPage = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResumeClick = () => {
+    if (isMobile) {
+      // Trigger the download of the resume PDF on small screens
+      const link = document.createElement("a");
+      link.href = "../assets/images/KESAVAN-PERUMALSAMY-RESUME.pdf"; // Replace with the actual path to your resume PDF
+      link.download = "K7-Resume.pdf";
+      link.click();
+    } else {
+      // Open the resume modal on large screens
+      setIsModalOpen(true);
+    }
+  };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Check on initial render
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  const closeModal = () => setIsModalOpen(false);
   const toggleNavbar = () => {
     setIsNavbarOpen(!isNavbarOpen);
   };
@@ -229,7 +258,7 @@ const ProjectsPage = () => {
           </ul>
           <div className="pt-16 flex justify-center">
             <button
-              target="_blank"
+              onClick={handleResumeClick}
               className="md:w-1/6 px-4 bg-Secondary flex items-center justify-center gap-2 border-2 font-cerotta hover:bg-transparent hover:border-2 border-Secondary py-2 rounded-3xl text-white hover:text-Secondary"
             >
               Resume <IoOpenOutline />
@@ -271,6 +300,9 @@ const ProjectsPage = () => {
             </h2>
           </div>
         </div>
+        {!isMobile && isModalOpen && (
+        <ResumeModal isOpen={isModalOpen} onClose={closeModal} />
+      )}
       </div>
     </>
   );

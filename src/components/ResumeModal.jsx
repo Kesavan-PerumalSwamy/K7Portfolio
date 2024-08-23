@@ -14,7 +14,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Resume Modal"
-      className="bg-white w-[75%] h-[95%]  p-6 rounded-2xl overflow-y-auto   mx-auto my-10"
+      className="bg-white w-[75%] h-[95%] uppercase  p-6 rounded-2xl overflow-y-auto   mx-auto my-10"
       overlayClassName="fixed w  z-50 inset-0 bg-black bg-opacity-75 flex justify-center items-center"
     >
       <div className="flex mt-2 mb-4  justify-between items-center ">
