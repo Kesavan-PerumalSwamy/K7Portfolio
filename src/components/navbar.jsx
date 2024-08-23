@@ -206,7 +206,7 @@ const Navbar = ({ onClose }) => {
             ref={(el) => (footerLinksRef.current[links.length] = el)} 
             href="../assets/images/KESAVAN-PERUMALSAMY-RESUME.pdf" 
             download="K7_Resume.pdf" 
-            className="text-white hover:text-[#FF7F3E]"
+            className="text-white md:flex hidden hover:text-[#FF7F3E]"
           >
             Resume
           </a>
