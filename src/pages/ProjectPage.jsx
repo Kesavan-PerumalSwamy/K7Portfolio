@@ -14,16 +14,16 @@ const ProjectsPage = () => {
 
   const handleResumeClick = () => {
     if (isMobile) {
-      // Trigger the download of the resume PDF on small screens
       const link = document.createElement("a");
-      link.href = "../assets/images/KESAVAN-PERUMALSAMY-RESUME.pdf"; // Replace with the actual path to your resume PDF
+      link.href = "https://drive.google.com/file/d/136h_iHaOl4hbKARIxDLb7fW1Mvka9JUS/view?usp=sharing"; 
       link.download = "K7-Resume.pdf";
       link.click();
     } else {
-      // Open the resume modal on large screens
       setIsModalOpen(true);
     }
   };
+  
+  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
