@@ -7,10 +7,10 @@ import Arrow from "../assets/images/Arrow.svg";
 import Diamondline from "../assets/images/DiamondLine.svg";
 import Underline from "../assets/images/Underline.svg";
 import line from "../assets/images/Lines.svg";
-import jothi from "../assets/images/JothiPort.png";
-import Intern from "../assets/images/Hompage.png";
-import LyteDesign from "../assets/images/Logo.png";
-import watch from "../assets/images/Watch.png";
+import kesavan from "../assets/images/KesavanPerumalsamy.png";
+import Intern from "../assets/images/theinternonline.png";
+import RightBrains from "../assets/images/RightBrains.png";
+import Rhythmoo from "../assets/images/Rhythmoo.png";
 import gsap from "gsap";
 import "./Homepage.css";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -100,7 +100,7 @@ const HomePage = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Check on initial render
+    handleResize(); 
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -245,22 +245,47 @@ const HomePage = () => {
 
   const imageRef = useRef(null);
 
+  const preloadedImages = {};
+
+  const preloadImage = (src) => {
+    if (!preloadedImages[src]) {
+      const img = new Image();
+      img.src = src;
+      preloadedImages[src] = img;
+    }
+  };
+  
   const handleMouseOver = (e, imageData) => {
+    preloadImage(imageData); 
+  
     const image = imageRef.current;
     image.setAttribute("src", imageData);
     image.style.display = "block";
-    image.style.position = "fixed"; 
-    image.style.pointerEvents = "none"; 
-    
+    image.style.position = "fixed";
+    image.style.pointerEvents = "none";
+    image.style.width = "200px";
+    image.style.height = "auto";
+    image.style.opacity = "0"; 
+    image.style.border = "4px solid #674188";
+    image.style.borderRadius = "10px";
+    image.style.transition = "opacity 0.2s ease-in-out"; 
+    requestAnimationFrame(() => {
+      image.style.opacity = "1"; 
+    });
   };
+  
+  
+  
 
   const handleMouseMove = (e) => {
-    const image = imageRef.current;
-    const offsetX = image.offsetWidth / 2;
-    const offsetY = image.offsetHeight / 2;
-
-    image.style.left = `${e.clientX - offsetX}px`;
-    image.style.top = `${e.clientY - offsetY}px`;
+    requestAnimationFrame(() => {
+      const image = imageRef.current;
+      const offsetX = image.offsetWidth / 2;
+      const offsetY = image.offsetHeight / 2;
+  
+      image.style.left = `${e.clientX - offsetX}px`;
+      image.style.top = `${e.clientY - offsetY}px`;
+    });
   };
 
   const handleMouseLeave = () => {
@@ -450,7 +475,7 @@ const HomePage = () => {
             ref={imageRef}
             src=""
             alt="Revealed"
-            className="absolute w-fit z-[999] h-72  object-contain pointer-events-none"
+            className="absolute z-[999] object-contain pointer-events-none"
             style={{ display: "none", position: "absolute" }}
           />
           
@@ -473,7 +498,7 @@ const HomePage = () => {
             />
           </div>
           <div
-            onMouseOver={(e) => handleMouseOver(e, LyteDesign)}
+            onMouseOver={(e) => handleMouseOver(e, RightBrains)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
@@ -485,7 +510,7 @@ const HomePage = () => {
                 onMouseOut={handleMouseOut}
                 className="hover-text font-walbaum text-Secondary md:text-5xl text-3xl"
               >
-                Lyte Design
+                Right Brains
               </h1>
               <button className="md:pt-10">
                 <img src={Arrow} alt="Arrow" />
@@ -498,7 +523,7 @@ const HomePage = () => {
             ref={imageRef}
             src=""
             alt="Revealed"
-            className="absolute z-[999] transition-all duration-500 ease-in-out w-fit h-72 object-contain pointer-events-none"
+            className="absolute z-[999] transition-all duration-500 ease-in-out object-contain pointer-events-none"
             style={{ display: "none", position: "absolute" }}
           />
         </div>
@@ -520,7 +545,7 @@ const HomePage = () => {
             />
           </div>
           <div
-            onMouseOver={(e) => handleMouseOver(e, jothi)}
+            onMouseOver={(e) => handleMouseOver(e, kesavan)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             className="py-10 overflow-hidden hover:px-20 transition-all duration-300  "
@@ -532,7 +557,7 @@ const HomePage = () => {
                 onMouseOut={handleMouseOut}
                 className=" hover-text font-walbaum text-Secondary md:text-5xl text-3xl"
               >
-                Jothivasan's Portfolio Design
+                Kesavan's Portfolio
               </h1>
               <button className="md:pt-10">
                 <img src={Arrow} alt="Arrow" />
@@ -545,7 +570,7 @@ const HomePage = () => {
             ref={imageRef}
             src=""
             alt="Revealed"
-            className="absolute z-[999] w-fit h-72 object-contain pointer-events-none"
+            className="absolute z-[999] object-contain pointer-events-none"
             style={{ display: "none", position: "absolute" }}
           />
         </div>
@@ -567,7 +592,7 @@ const HomePage = () => {
             />
           </div>
           <div
-            onMouseOver={(e) => handleMouseOver(e, watch)}
+            onMouseOver={(e) => handleMouseOver(e, Rhythmoo)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             className="py-10 overflow-hidden  hover:px-20 transition-all duration-300  "
@@ -579,7 +604,7 @@ const HomePage = () => {
                 onMouseOut={handleMouseOut}
                 className="font-walbaum text-Secondary md:text-5xl text-3xl"
               >
-                Samsung Watch ReDesign
+                Rhythmoo Spotify-clone
               </h1>
               <button className="md:pt-10">
                 <img src={Arrow} alt="Arrow" />

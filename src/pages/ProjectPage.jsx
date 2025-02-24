@@ -132,45 +132,44 @@ const ProjectsPage = () => {
             />
             <Cards
               index="2"
-              title="LyteDesign - Web Design & Development Agency"
-              title1="LyteDesign"
-              overview="LyteDesign is an up-and-coming web design and development startup focused on creating stunning, award-winning websites for businesses looking to make a strong digital impact. Currently in the design phase, LyteDesign is set to revolutionize how businesses connect with their audience through innovative design and cutting-edge technology."
+              title="Right Brains - Video Editing Course Selling Site"
+              title1="RightBrains"
+              overview="RightBrains is an online platform dedicated to selling high-quality video editing courses. The website provides a seamless user experience, allowing customers to register, purchase courses, and track their progress. It also features a robust admin panel for managing sales and customer details."
               link="#"
-              linktext="Coming Soon"
-              myrole="As the lead designer, I am responsible for shaping the brand’s visual identity and crafting a user-centric website that sets a new standard for web design."
+              linktext="Private Client Work"
+              myrole="As a Full-Stack Developer, I was responsible for both the frontend and backend development, with a primary focus on backend implementation."
               keyfeatures={[
                 {
-                  title: "Brand Identity",
+                  title: "Customer Registration & Authentication",
                   description:
-                    "Developing a strong and memorable brand identity that resonates with clients and stands out in the market.",
+                    " Implemented secure OTP verification, password hashing with bcrypt, and JWT authentication for user security",
                 },
                 {
-                  title: "Interactive Design",
+                  title: "Razorpay Payment Integration",
                   description:
-                    "Incorporating Three.js for a highly interactive and visually striking landing page.",
+                    "Integrated Razorpay for seamless course purchases, handling payment verification, success, and failure notifications via Nodemailer",
                 },
                 {
-                  title: "Responsive Layout",
+                  title: "Admin Panel & Sales Analytics",
                   description:
-                    "Ensuring the site is fully responsive and accessible across all devices.",
+                    "Built an admin dashboard with login authentication, real-time sales analytics charts, and a customer management system",
                 },
                 {
-                  title: "Client Showcase",
+                  title: "Optimized Frontend Performance",
                   description:
-                    "Highlighting completed projects with detailed case studies to build trust and demonstrate expertise.",
+                    "Used Vite for fast builds, Redux for state management, and React Helmet for SEO optimization",
                 },
                 {
-                  title: "SEO Optimization",
+                  title: "Smooth Animations & UI Enhancements",
                   description:
-                    "Implementing best practices to ensure the website ranks well in search engines, driving organic traffic.",
+                    "Integrated Framer Motion & GSAP for a dynamic user experience, along with Tailwind CSS for a modern UI",
                 },
               ]}
               technologies={[
-                "Design: Figma, Adobe XD, Photoshop",
-                "Development (Planned): React.js, Three.js, Chakra UI",
-                "Other: SEO Tools, Google Analytics",
+                "Frontend: React.js, Vite, Redux, Framer Motion, GSAP, React Helmet, Axios, Tailwind CSS",
+                "Backend: Node.js, Express.js, MongoDB (Mongoose), Razorpay, Nodemailer, Bcrypt, JWT"
               ]}
-              challenges="The primary challenge has been designing an interface that not only captures attention but also delivers a smooth user experience. I’ve been focusing on balancing eye-catching visuals with usability, ensuring that the site is both beautiful and easy to navigate. The use of Three.js has required careful planning to avoid performance issues, which I’ve tackled through optimization techniques."
+              challenges="One of the key challenges was ensuring secure transactions and smooth user authentication. To address this, I implemented: JWT-based authentication for protected routes. Optimized API calls to enhance payment success rates. Performance tuning in animations and state management to ensure a lag-free experience"
             />
             <Cards
               index="3"

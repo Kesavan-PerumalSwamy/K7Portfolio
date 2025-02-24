@@ -260,35 +260,35 @@ const ResumeModal = ({ isOpen, onClose }) => {
                 </p>
 
                 <h2 className="font-bold font-OpenSans pt-3 text-xl">
-                  LyteDesign – Web Design Agency |{" "}
+                Right Brains - Video Editing Course Selling Site |{" "}
                   <a href="#" className="text-blue-500 font-normal text-base">
-                    In Progress
+                    Completed
                   </a>
                 </h2>
                 <p className="pt-1 font-OpenSans font-semibold text-gray-600">
-                  <span className="font-bold">Role:</span> Web Designer
+                  <span className="font-bold">Role:</span> Mern Developer
                 </p>
                 <h3 className="font-semibold font-OpenSans text-gray-500  text-sm">
-                  July 2024 – Present{" "}
+                  September 2024 – November 2024
                 </h3>
                 <ul className="list-disc list-inside pt-3 font-OpenSans text-sm font-light">
                   <li className="  ">
-                    Spearheading the design phase for a web design agency site,
-                    emphasizing brand identity and modern aesthetics.
+                  Developed secure customer authentication with OTP verification, bcrypt password hashing, and JWT-based authentication
                   </li>
                   <li className=" ">
-                    Creating visually appealing, user-focused designs in Figma,
-                    incorporating innovative trends and interactive elements.
+                  Integrated Razorpay payment gateway with automated success/failure email notifications via Nodemailer
                   </li>
                   <li>
-                    Working closely with developers to ensure design feasibility
-                    and a smooth transition from design to development.
+                  Built a feature-rich admin panel with login authentication, real-time sales analytics, and customer management
+                  </li>
+                  <li>
+                  Enhanced user experience with Framer Motion, GSAP animations, and a modern UI using Tailwind CSS
                   </li>
                 </ul>
                 <p className="pt-1 font-OpenSans text-base font-medium ">
                   Techologies:{" "}
                   <span className="font-normal text-gray-600 text-sm">
-                    Figma • Canva • Spline
+                  React.js • Vite • Redux • Node.js • Express.js • MongoDB (Mongoose) • Razorpay • JWT • Bcrypt • Nodemailer • Framer Motion • GSAP • React Helmet • Axios • Tailwind CSS
                   </span>
                 </p>
                 <h1 className=" font-thin pt-3 text-3xl text-gray-500 uppercase">
